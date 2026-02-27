@@ -165,7 +165,9 @@ for i in range(100):
     plt.clf()    # 前回のグラフ消去
     
 # 動画生成
-os.system("ffmpeg -r 10 -i graph/%03d.png -y -vcodec libx264 -pix_fmt yuv420p out.mp4")
+#os.system("ffmpeg -r 10 -i graph/%03d.png -y -vcodec libx264 -pix_fmt yuv420p out.mp4")
+# フレームレート半分
+os.system("ffmpeg -r 5 -i graph/%03d.png -y -vcodec libx264 -pix_fmt yuv420p out.mp4")
 
 
 
