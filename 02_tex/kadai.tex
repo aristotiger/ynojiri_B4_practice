@@ -1,0 +1,200 @@
+\documentclass[twocolumn,a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{ascmac}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{footnote}
+
+%色付き
+\newcommand{\red}[1]{{\color{red}#1}}
+
+% 所属と氏名を右寄せにする設定
+\makeatletter
+  \def\@maketitle{%
+  \newpage\null
+  %\vskip 2em%
+  \begin{center}%
+  \let\footnote\thanks
+    {\LARGE \@title \par}%
+    %\vskip 1.5em%
+  \end{center}% 追加
+    \mbox{}\hfill%% 追加
+    {\large
+      %\lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+  \begin{center}% 追加
+    {\large \@date}%
+  \end{center}%
+  %\par\vskip 1.5em
+}
+
+% section前後の行間を詰める設定
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {.3\Cvs \@plus.5\Cvs \@minus.2\Cvs}% % section上部の空白量
+   {.2\Cvs \@plus.3\Cvs}%                % section下部の空白量
+   {\reset@font\Large\bfseries}}         % フォント，フォントサイズを変更
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+   {.3\Cvs \@plus.5\Cvs \@minus.2\Cvs}%
+   {.2\Cvs \@plus.3\Cvs}%
+   {\reset@font\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+   {.3\Cvs \@plus.5\Cvs \@minus.2\Cvs}% 
+   {.2\Cvs \@plus.3\Cvs}%
+   {\reset@font\normalsize\bfseries}}
+
+\makeatother
+
+
+% 余白の設定
+\usepackage[top=20truemm,bottom=20truemm,left=20truemm,right=20truemm]{geometry}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 皆さんが書き換えるのはここから %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\TeX で自己紹介シートを作成しよう!}	% タイトル
+\author{プログラム名 中村(友)研究室\\学籍番号 氏名} % 所属，学籍番号，名前
+\date{}
+
+%%%%%%%%%%%%%%% 練習7 %%%%%%%%%%%%%%%%%
+% ここの数字をいじってページ数をちょうど2ページに合わせてみましょう．
+\renewcommand{\baselinestretch}{1.0}
+%%%%%%%%%%%%%%% ここまで %%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\maketitle
+
+\renewcommand{\headrulewidth}{0.0pt}
+\thispagestyle{fancy}
+\lhead{}
+\rhead{自己紹介　xxxx/xx/xx提出}
+\cfoot{\thepage{}}
+
+\input{mathdef}
+
+
+\section{はじめに}
+``main.tex''を編集しておおまかな``\TeX''の扱いが理解できたかと思います．
+$2$章以降の指示に従い自己紹介シートを完成させGitHubで共有しましょう．
+
+\section{事前準備}
+まずは課題提出用のプライベートリポジトリを研究室のGitHubに作成しましょう．
+
+\begin{enumerate}
+  \item 研究室のGitHubに「(氏名)\_tex\_practice」（例：nakamura\_tex\_practice）という名前の{\bf プライベートリポジトリ}\footnote{パブリックリポジトリにすると，個人情報を全世界に発信してしまうので注意してください}を作成
+  \item 作成したリポジトリを自身のPCにクローン
+  \item TeXの課題ページからkadai.tex・mathdef.tex・bayes.pdfをダウンロードする
+  \item ダウンロードしたkadai.texとmathdef.texをクローンしたリポジトリに入れる
+  \item クローンしたリポジトリにfigというフォルダを作成し，bayes.pdfを作成したfigフォルダ内に入れる
+  \item クローンしたリポジトリ内のkadai.texがコンパイルできることを確認（コンパイルできない場合は，コンパイルできるよう修正する）
+  \item 追加したファイルをステージ（add）し，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の3章参考
+\section{名前$\cdot$誕生日$\cdot$出身}
+\begin{description}
+\item[指示1:]この章にsubsectionを作成し，名前・誕生日・出身地を記述しましょう．
+\item[指示2:]それぞれのsubsectionにsubsubsectionを作成し，名前のsubsubsectionには呼ばれたことのあるニックネームを，誕生日のsubsubsectionにはその日が何の日か，出身地のsubsubsectionにはその土地の特産を記述しましょう．
+\item[指示3:]PDFと変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の7章参考
+
+
+\section{写真の挿入}
+\begin{description}
+\item[指示1:]どのような写真でもいいので，自身の写真を挿入してください（似顔絵や加工したものでもいいですが，なるべく顔が分かるようなものだとありがたいです
+\footnote{事務所NGや宗教上の理由で挿入できない場合には，好きなものの画像でも構いません．}）
+\item[指示2:]インターネットから好きな写真をダウンロードして本文内に挿入し，画像の出典を参考文献に記載してください
+\item[指示3:] その写真を簡単に説明する文章を加えて，その文章内で\verb|\label|，\verb|\ref|，\verb|\cite|を用いて，加えた画像と参考文献を参照してください
+\item[指示4:]追加・変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の6章参考
+\section{箇条書き}
+\begin{description}
+\item[指示1:]箇条書きで好きなものを10個以上列挙しましょう
+\item[指示2:]変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の8章,5章参考
+\section{表の挿入\&参考文献}
+\begin{description}
+\item[指示1:]以下の設問を1列目に，回答を2列目に記述した表($8 \times 2$)を作成しましょう（ない場合は，``無し''でもいいです）
+\item[指示2:]回答のURL等ある場合は，``footnote''を使いましょう．
+%ヒント!!!
+%\begin{table}~\end{table}までを，\begin{savenotes}と\end{savenotes}で挟みましょう.
+\item[指示3:]回答に関する参考文献を1つ以上追加し，表内で参照しましょう
+\item[指示4:]変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+
+\noindent {\bf＜設問＞}
+\begin{enumerate}
+\setlength{\parskip}{-0.2mm}
+\setlength{\itemsep}{-0.1mm}
+  \item 血液型
+  \item 好きな曲
+  \item 好きなゲーム
+  \item 好きなアニメ$\cdot$ドラマ
+  \item サークル$\cdot$部活（大学以前でもいいです）
+  \item オススメのご飯$\cdot$ご飯屋
+  \item オススメのお菓子
+  \item オススメの観光地
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の9章参考
+\begin{figure}[t]
+　\centering 
+  \includegraphics[scale=0.8]{fig/bayes.pdf}
+  \caption{ベイズの定理}
+  \label{fig:bayes}
+\end{figure}
+
+\section{数式}
+\begin{description}
+\item[指示1:]図\ref{fig:bayes}を数式で作成してください．
+\item[指示2:]変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%「TeX使おう！」の10章参考
+\section{ページ数の調整}
+\begin{description}
+\item[指示1:]ソースファイルの上部に書かれている\verb|\renewcommand{\baselinestretch}{1.0}|を用いて， 2ページちょうどに調整してみましょう．
+\item[指示2:]変更したファイルをステージし，内容が分かりやすいコミットメッセージを付けてcommit・pushしましょう
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{提出方法}
+指定された期日までに本自己紹介シートを作成して，GitHubへプッシュすることで提出がされたものとみまします．
+リポジトリ内に，コンパイルに必要な全てのファイルとコンパイルされたPDFが入っていることを必ず確認してください．
+最後にリポジトリを新たにクローンして，コンパイルできるかを確認するといかと思います．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+
+\bibitem{nakamura2014}
+中村友昭，
+``\TeX を使おう！'', 
+ゼミ資料, pp.1-5, 2014
+
+\end{thebibliography}
+
+\thispagestyle{fancy}
+\renewcommand{\headrulewidth}{0.0pt}
+\rhead{}
+%指導教員の数で以下のコメントアウトを切り替える
+%\rfoot{\underline{指導教員氏名\hspace{8em}印}}
+%\cfoot{\underline{主任指導教員氏名\hspace{7em}印} ~~ \underline{指導教員氏名\hspace{7em}印} ~~  \underline{指導教員氏名\hspace{7em}印}}
+\end{document} 
